@@ -1,5 +1,8 @@
 {
   "name": "how_to_tabs",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jake": "^8.0.12"
+  }
 }
