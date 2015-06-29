@@ -6,6 +6,7 @@
     "node": "0.12.4"
   },
   "devDependencies": {
-    "jake": "^8.0.12"
+    "jake": "^8.0.12",
+    "semver": "^4.3.6"
   }
 }
