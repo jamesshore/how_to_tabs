@@ -2,6 +2,9 @@
   "name": "how_to_tabs",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "0.12.4"
+  },
   "devDependencies": {
     "jake": "^8.0.12"
   }
