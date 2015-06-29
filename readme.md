@@ -31,8 +31,7 @@ To try the code on your computer:
 
 To run the build:
 
-1. Rebuild dependencies: `npm rebuild`
-2. Run jake: `node_modules/.bin/jake` (Mac/Unix) or `node_modules\.bin\jake` (Windows)
+1. Run `./jake.sh` (Mac/Unix) or `jake` (Windows)
 
 
 To look at the source code for a particular episode:
