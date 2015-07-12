@@ -36,20 +36,21 @@
 				eqeqeq: true,
 				forin: true,
 				freeze: true,
-				futurehostile: true
+				futurehostile: true,
+				latedef: "nofunc",
+				noarg: true,
+				nocomma: true,
+				nonbsp: true,
+				nonew: true,
+				strict: true,
+				undef: true,
+
+				node: true,
+				browser: true
 			},
-			globals: {}
+			globals: {
+			}
 		}, complete, fail);
 	}, { async: true });
-
-	deleteme();
-
-	function deleteme() {
-		var a = 0;
-		var b = "0";
-
-		if (a === b) console.log("Equal");
-		else console.log("Not equal");
-	}
 
 }());
