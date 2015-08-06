@@ -10,6 +10,7 @@
     "http-server": "^0.8.0",
     "jake": "^8.0.12",
     "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
     "semver": "^4.3.6",
     "simplebuild-jshint": "^0.3.0"
   }
