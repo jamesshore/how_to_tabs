@@ -65,7 +65,8 @@
 			expectedBrowsers: [
 				"Firefox 40.0.0 (Mac OS X 10.10.0)",
 				"Chrome 44.0.2403 (Mac OS X 10.10.5)"
-			]
+			],
+			strict: !process.env.loose
 		}, complete, fail);
 	}, { async: true });
 
