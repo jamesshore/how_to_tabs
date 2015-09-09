@@ -64,7 +64,12 @@
 			configFile: KARMA_CONFIG,
 			expectedBrowsers: [
 				"Firefox 40.0.0 (Mac OS X 10.10.0)",
-				"Chrome 45.0.2454 (Mac OS X 10.10.5)"
+				"Chrome 45.0.2454 (Mac OS X 10.10.5)",
+				"IE 11.0.0 (Windows 7 0.0.0)",
+				"IE 9.0.0 (Windows 7 0.0.0)",
+				"Safari 8.0.8 (Mac OS X 10.10.5)",
+				"Mobile Safari 8.0.0 (iOS 8.4.0)",
+				"Chrome Mobile 39.0.0 (Android 5.1.0)"
 			],
 			strict: !process.env.loose
 		}, complete, fail);
