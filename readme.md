@@ -35,6 +35,8 @@ To run the build:
 2. Navigate at least one browser to `http://localhost:9876`
 3. Run `./jake.sh loose=true` (Mac/Unix) or `jake loose=true` (Windows) each time you want to run the build
 
+Note that some episodes' code doesn't build successfully. For details, watch the episodes. 
+
 
 To look at the source code for a particular episode:
 ----------------------------------------------------
