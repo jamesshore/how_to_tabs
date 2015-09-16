@@ -69,7 +69,7 @@
 				"IE 9.0.0 (Windows 7 0.0.0)",
 				"Safari 8.0.8 (Mac OS X 10.10.5)",
 				"Mobile Safari 8.0.0 (iOS 8.4.0)",
-				"Chrome Mobile 39.0.0 (Android 5.1.0)"
+				"Chrome Mobile 44.0.2403 (Android 6.0.0)"
 			],
 			strict: !process.env.loose
 		}, complete, fail);
