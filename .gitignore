@@ -7,6 +7,9 @@
 # npm
 node_modules/**/.bin/
 
+# generated files
+generated/
+
 # Karma binaries
 node_modules/karma/node_modules/chokidar/node_modules/fsevents/build/
 node_modules/karma/node_modules/socket.io/node_modules/engine.io/node_modules/ws/node_modules/bufferutil/build/
