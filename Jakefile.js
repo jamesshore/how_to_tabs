@@ -30,7 +30,7 @@
 	desc("Run a localhost server");
 	task("run", [ "build" ], function() {
 		jake.exec("node node_modules/http-server/bin/http-server " + DIST_DIR, { interactive: true }, complete);
-	});
+	}, { async: true });
 
 	desc("Erase all generated files");
 	task("clean", function() {
@@ -94,7 +94,7 @@
 			"node node_modules/browserify/bin/cmd.js src/javascript/app.js -o " + DIST_DIR + "/bundle.js",
 			{ interactive: true },
 			complete);
-	});
+	}, { async: true });
 
 	directory(DIST_DIR);
 
