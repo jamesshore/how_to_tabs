@@ -7,9 +7,22 @@
 
 	describe("Tabs", function() {
 
-		it("has an API", function() {
+		it("hides an element", function() {
+			// Arrange
+			var element = document.createElement("div");
 
-			tabs.initialize();
+			// Act
+			tabs.initialize(element);
+
+			// Assert
+			var styles = getComputedStyle(element);
+			var display = styles.getPropertyValue("display");
+
+			assert.equal(display, "none");
+
+			// Reset
+			// remove the test element
+
 
 
 
