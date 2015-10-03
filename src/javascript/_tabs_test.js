@@ -8,29 +8,26 @@
 	describe("Tabs", function() {
 
 		it("hides an element", function() {
-			// Arrange
-			var element = document.createElement("div");
-
-			// Act
+			var element = addElement("div");
 			tabs.initialize(element);
-
-			// Assert
-			var styles = getComputedStyle(element);
-			var display = styles.getPropertyValue("display");
-
-			assert.equal(display, "none");
-
-			// Reset
-			// remove the test element
-
-
-
-
-			//var div = document.createElement("div");
-			//div.innerHTML = "This is an example.";
-			//document.body.appendChild(div);
-			//div.parentNode.removeChild(div);
+			assert.equal(getDisplayProperty(element), "none");
+			removeElement(element);
 		});
+
+		function addElement(tagName) {
+			var element = document.createElement(tagName);
+			document.body.appendChild(element);
+			return element;
+		}
+
+		function getDisplayProperty(element) {
+			var styles = getComputedStyle(element);
+			return styles.getPropertyValue("display");
+		}
+
+		function removeElement(element) {
+			element.parentNode.removeChild(element);
+		}
 
 	});
 
