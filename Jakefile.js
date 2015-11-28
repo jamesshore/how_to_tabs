@@ -71,7 +71,7 @@
 		karma.run({
 			configFile: KARMA_CONFIG,
 			expectedBrowsers: [
-				"Firefox 41.0.0 (Mac OS X 10.10.0)",
+				"Firefox 42.0.0 (Mac OS X 10.10.0)",
 				"Chrome 46.0.2490 (Mac OS X 10.10.5)",
 				"IE 11.0.0 (Windows 7 0.0.0)",
 				"IE 9.0.0 (Windows 7 0.0.0)",
