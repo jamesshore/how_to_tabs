@@ -7,33 +7,28 @@
 	classList.shim();
 
 	exports.initialize = function initialize(options) {
-		var tabs = options.tabs;
-		var content = options.content;
-		var defaultTab = options.defaultTab;
-		var activeTabClass = options.activeTabClass;
-		var hiddenContentClass = options.hiddenContentClass;
+		checkOption(options.tabs, "options.tabs");
+		checkOption(options.content, "options.content");
+		checkOption(options.defaultTab, "options.defaultTab");
+		checkOption(options.activeTabClass, "options.activeTabClass");
+		checkOption(options.hiddenContentClass, "options.hiddenContentClass");
 
-		checkOption(tabs, "options.tabs");
-		checkOption(content, "options.content");
-		checkOption(defaultTab, "options.defaultTab");
-		checkOption(activeTabClass, "options.activeTabClass");
-		checkOption(hiddenContentClass, "options.hiddenContentClass");
-
-		showTab(defaultTab, tabs, content, activeTabClass, hiddenContentClass);
+		showTab(options.defaultTab, options);
 	};
 
-	function showTab(tabToShow, tabs, content, activeTabClass, hiddenContentClass) {
-		var activeIndex = findIndexOfDefaultElement(tabs, tabToShow);
-		var defaultContent = content[activeIndex];
+	function showTab(tabToShow, options) {
+		var activeIndex = findIndex(options.tabs, tabToShow);
+		var contentToShow = options.content[activeIndex];
 
-		content.forEach(function(element) {
-			element.classList.add(hiddenContentClass);
+		options.content.forEach(function(element) {
+			element.classList.add(options.hiddenContentClass);
 		});
-		defaultContent.classList.remove(hiddenContentClass);
-		tabToShow.classList.add(activeTabClass);
+
+		contentToShow.classList.remove(options.hiddenContentClass);
+		tabToShow.classList.add(options.activeTabClass);
 	}
 
-	function findIndexOfDefaultElement(contentTabs, defaultContentTab) {
+	function findIndex(contentTabs, defaultContentTab) {
 		for (var i = 0; i < contentTabs.length; i++) {
 			if (contentTabs[i] === defaultContentTab) return i;
 		}
