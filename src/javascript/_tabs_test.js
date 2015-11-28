@@ -7,6 +7,7 @@
 
 	describe("Tabs", function() {
 
+		var HIDDEN_CONTENT = "hideClass";
 		var IRRELEVANT = "irrelevant";
 
 		var container;
@@ -20,7 +21,7 @@
 			removeElement(container);
 		});
 
-		it("hides all content elements except the default upon initialization", function() {
+		it("use a class to hide all content elements except the default upon initialization", function() {
 			var defaultTab = createTab();
 
 			var content1 = createTabContent();
@@ -32,15 +33,15 @@
 				content: [ content1, defaultContent, content3 ],
 				defaultTab: defaultTab,
 				activeTabClass: IRRELEVANT,
-				hiddenContentClass: "hideClass"
+				hiddenContentClass: HIDDEN_CONTENT
 			});
 
-			assert.equal(getClasses(content1), "hideClass", "element 1 should be hidden");
-			assert.equal(getClasses(defaultContent), "", "default element should not be hidden");
-			assert.equal(getClasses(content3), "hideClass", "element 3 should be hidden");
+			assertContentHidden(content1, "element 1");
+			assertContentVisible(defaultContent, "default element");
+			assertContentHidden(content3, "element 3");
 		});
 
-		it("styles the default tab with a class", function() {
+		it("styles the default tab with a class upon initialization", function() {
 			var tab1 = createTab();
 			var defaultTab = createTab();
 			var tab3 = createTab();
@@ -58,6 +59,31 @@
 			assert.equal(getClasses(tab1), null, "tab 1 should not be styled");
 			assert.equal(getClasses(defaultTab), "activeTab", "default element should be styled");
 			assert.equal(getClasses(tab3), null, "tab 3 should not be styled");
+		});
+
+		it("switch content when tab is clicked", function() {
+			var tab1 = createTab();
+			var tab2 = createTab();
+			var tab3 = createTab();
+
+			var content1 = createTabContent();
+			var content2 = createTabContent();
+			var content3 = createTabContent();
+
+			tabs.initialize({
+				tabs: [ tab1, tab2, tab3 ],
+				content: [ content1, content2, content3 ],
+				defaultTab: tab1,
+				activeTabClass: "activeTab",
+				hiddenContentClass: HIDDEN_CONTENT
+			});
+
+			// click tab 2
+			// assert content 2 is visible
+			// assert content 1 is no longer visible
+
+			// assert tab 2 is active
+			// assert tab 1 is no longer active
 		});
 
 		it("preserves existing classes when adding new classes", function() {
@@ -79,6 +105,14 @@
 			assert.equal(getClasses(defaultTab), "existingTabClass activeTab", "tab should preserve existing classes");
 			assert.equal(getClasses(hiddenContent), "existingContentClass hiddenContent", "content should preserve existing classes");
 		});
+
+		function assertContentHidden(element, elementName) {
+			assert.equal(getClasses(element), HIDDEN_CONTENT, elementName + " should be hidden");
+		}
+
+		function assertContentVisible(element, elementName) {
+			assert.equal(getClasses(element), "", elementName + " should not be hidden");
+		}
 
 		function getClasses(element) {
 			return element.getAttribute("class");
