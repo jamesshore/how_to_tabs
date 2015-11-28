@@ -13,14 +13,17 @@
 		checkOption(options.activeTabClass, "options.activeTabClass");
 		checkOption(options.hiddenContentClass, "options.hiddenContentClass");
 
+		handleClicks(options);
 		showTab(options.defaultTab, options);
+	};
 
+	function handleClicks(options) {
 		options.tabs.forEach(function(tabElement) {
 			tabElement.addEventListener("click", function(event) {
 				showTab(event.target, options);
 			});
 		});
-	};
+	}
 
 	function showTab(tabToShow, options) {
 		var activeIndex = findIndex(options.tabs, tabToShow);
