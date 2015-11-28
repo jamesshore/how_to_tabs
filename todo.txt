@@ -5,5 +5,3 @@ Mark a tab as active
 Rename "contentHideClass" --> "hiddenContentClass"?
 
 Change "default" to refer to tab rather than content element?
-
-Finish "active tab" code--right now, it's hard-coded to use the first element
