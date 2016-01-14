@@ -2,6 +2,10 @@ body {
 	margin: 0;
 }
 
+.hidden {
+	display: none;
+}
+
 .tabs {
 	width: 100%;
 	height: 30px;
@@ -26,6 +30,11 @@ a {
 	outline: none;
 }
 
+.tabs li.active {
+	border-color: #aaa;
+}
+
+
 .tabs li a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: small;
@@ -43,7 +52,7 @@ a {
 	border-bottom: solid 1px #CCC;
 }
 
-.tabs li a.active {
+.tabs li.active a {
 	color: #5685bc;;
 	background: #FFF;
 	text-decoration: none;
@@ -51,7 +60,7 @@ a {
 	border-bottom: none;
 }
 
-.tabs li a.active:hover, #tabs li a:hover {
+.tabs li.active a:hover, #tabs li a:hover {
 	color: #5685bc;
 	outline: none;
 }
