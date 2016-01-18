@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
+// Copyright (c) 2015-2016 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
 (function() {
 	"use strict";
 
@@ -40,11 +40,11 @@
 		contentToShow.classList.remove(options.hiddenContentClass);
 	}
 
-	function findIndex(contentTabs, defaultContentTab) {
+	function findIndex(contentTabs, tabToShow) {
 		for (var i = 0; i < contentTabs.length; i++) {
-			if (contentTabs[i] === defaultContentTab) return i;
+			if (contentTabs[i] === tabToShow) return i;
 		}
-		throw new Error("Could not find default in list");
+		throw new Error("Could not find tab to show: " + tabToShow.outerHTML);
 	}
 
 	function checkOption(option, name) {
