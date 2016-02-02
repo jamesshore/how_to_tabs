@@ -75,7 +75,7 @@
 				"Chrome 48.0.2564 (Mac OS X 10.10.5)",
 				"IE 11.0.0 (Windows 7 0.0.0)",
 				"IE 9.0.0 (Windows 7 0.0.0)",
-				"Safari 9.0.2 (Mac OS X 10.10.5)",
+				"Safari 9.0.3 (Mac OS X 10.10.5)",
 				"Mobile Safari 9.0.0 (iOS 9.2.0)",
 				"Chrome Mobile 44.0.2403 (Android 6.0.0)"
 			],
