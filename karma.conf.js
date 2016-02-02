@@ -17,7 +17,8 @@ module.exports = function(config) {
     files: [
       'src/javascript/**/*.js',
       'src/vendor/chai-2.1.0.js',
-      'src/vendor/classList.js'
+      'src/vendor/classList.js',
+      'src/vendor/sinon-1.17.3.js'
     ],
 
 
