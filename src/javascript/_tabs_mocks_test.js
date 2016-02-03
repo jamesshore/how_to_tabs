@@ -1,4 +1,6 @@
 // Copyright (c) 2015-2016 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
+/* globals sinon:false */
+
 (function() {
 	"use strict";
 
@@ -11,36 +13,44 @@
 		var HIDDEN_CONTENT = "hideClass";
 		var IRRELEVANT = "irrelevant";
 
-		var container;
+		function createFakeElement() {
+			return {
+				addEventListener: function() {},
+				classList: {
+					add: function() {},
+					remove: function() {}
+				}
+			};
+		}
 
-		beforeEach(function() {
-			container = document.createElement("div");
-			document.body.appendChild(container);
-		});
+		it("use a class to hide all content elements except the default upon initialization", sinon.test(function() {
+			var defaultTab = createFakeElement();
 
-		afterEach(function() {
-			removeElement(container);
-		});
+			var content1 = createFakeElement();
+			var defaultContent = createFakeElement();
+			var content3 = createFakeElement();
 
-		it("use a class to hide all content elements except the default upon initialization", function() {
-			var defaultTab = createTab();
+			// Expect every content element to be hidden
+			this.mock(content1.classList).expects("add").once().withExactArgs(HIDDEN_CONTENT);
+			this.mock(defaultContent.classList).expects("add").once().withExactArgs(HIDDEN_CONTENT);
+			this.mock(content3.classList).expects("add").once().withExactArgs(HIDDEN_CONTENT);
 
-			var content1 = createTabContent();
-			var defaultContent = createTabContent();
-			var content3 = createTabContent();
+			// And then the default content element should be revealed
+			this.mock(defaultContent.classList).expects("remove").once().withExactArgs(HIDDEN_CONTENT);
+
+			// No other content elements should be revealed
+			this.mock(content1.classList).expects("remove").never();
+			this.mock(content3.classList).expects("remove").never();
+
 
 			tabs.initialize({
-				tabs: [ createTab(), defaultTab, createTab() ],
+				tabs: [ createFakeElement(), defaultTab, createFakeElement() ],
 				content: [ content1, defaultContent, content3 ],
 				defaultTab: defaultTab,
 				activeTabClass: IRRELEVANT,
 				hiddenContentClass: HIDDEN_CONTENT
 			});
-
-			assertContentHidden(content1, "element 1 should be hidden");
-			assertContentVisible(defaultContent, "default element should not be hidden");
-			assertContentHidden(content3, "element 3 should be hidden");
-		});
+		}));
 
 
 		//*** REMAINING TESTS LEFT AS AN EXERCISE FOR THE VIEWER ***
@@ -131,50 +141,6 @@
 		//	assert.equal(getClasses(defaultTab), "existingTabClass activeTab", "tab should preserve existing classes");
 		//	assert.equal(getClasses(hiddenContent), "existingContentClass hiddenContent", "content should preserve existing classes");
 		//});
-
-		function assertTabActive(element, message) {
-			assert.equal(getClasses(element), ACTIVE_TAB, message);
-		}
-
-		function assertTabInactive(element, message) {
-			assert.equal(getClasses(element), "", message);
-		}
-
-		function assertContentHidden(element, message) {
-			assert.equal(getClasses(element), HIDDEN_CONTENT, message);
-		}
-
-		function assertContentVisible(element, message) {
-			assert.equal(getClasses(element), "", message);
-		}
-
-		function getClasses(element) {
-			var result = element.getAttribute("class");
-			if (result === null) result = "";
-			return result;
-		}
-
-		function createTab() {
-			var tab = addElement("div");
-			tab.innerHTML = "tab";
-			return tab;
-		}
-
-		function createTabContent() {
-			var tab = addElement("div");
-			tab.innerHTML = "content";
-			return tab;
-		}
-
-		function addElement(tagName) {
-			var element = document.createElement(tagName);
-			container.appendChild(element);
-			return element;
-		}
-
-		function removeElement(element) {
-			element.parentNode.removeChild(element);
-		}
 
 	});
 
